@@ -1,7 +1,7 @@
-+ **Assignment 1:** Ιmplemented from scratch, using C, three basic but fundamental cryptographic algorithms:
-                    1. One-time pad
-                    2. Caesar’s cipher
-                    3. Vigenère’s cipher
++ **Assignment 1:** Ιmplemented from scratch, using C, three basic but fundamental cryptographic algorithms:<br>
+                    (i)   One-time pad <br>
+                    (ii)  Caesar’s cipher <br>
+                    (iii) Vigenère’s cipher <br>
 
 + **Assignment 2:**
 
