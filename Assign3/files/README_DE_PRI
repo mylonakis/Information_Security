@@ -1,0 +1,126 @@
+Surname: Mylonakis
+Name: Emmanouil
+Registration Number: 2015030079
+
+/* ============================= Important Notes ============================= */
+
+	Like the previous project (assign2), this readme file is going to be written
+in English Language. I have been studing English for 3 weeks. I take lessons in
+order get profficiency. I am taking advantage of Reamde files so i can do more
+practise. Any grammar or syntax error, that you are going to discover in this 
+file, will make you laugh or outrage, depends on your personality. This Readme 
+file is required for success. Thus, i am fully associated with the existance of 
+any possible scenario will probably harm you. Of course, if you are the type of 
+person who likes self-sarcasm humor, then, pick a bowl filled by pop-corn and enjoy. 
+								
+								! *HAVE FUN :-D* !
+
+/* ============================= TASK A ============================= */
+
+Goal: RSA Key Derivation Function.
+
+Implemented Functions and Description:
+
+- 1. Sieve of Eratosthenes.
+	By using the given link at wikipedia, we implement 
+	size_t * sieve_of_eratosthenes(int a, int *b).
+	in order to derive prime numbers up to a limit (our case 255),
+	by consulted the pseudo-algorithm link contains. 
+	Argument a is the limit.
+	Argument b is the number of primes. Updated by reference.
+	Returns the list of primes.
+
+- 2. Pick p and q.
+	Randomly pick 2 different numbers from above pool.
+
+- 3. Compute n.	n = p*q.
+
+- 4. Euler's totient. fi_n = (p-1)*(q-1).
+
+- 5. Choose prime e.
+	Using the function size_t choose_e(size_t a);
+	Argument a is fi_n from above step.
+	Return the first number which satisfies the condition,
+	(isprime(e) &&((e % fi_n) != 0) && (gcd(e,fi_n) == 1).
+	isprime(size_t x) function returns true if x is prime else false.
+	gcd() is the Greatest Common Denominator wich implemented by
+	Euclidean algorithm. We honor Grecians.
+
+- 6. Modular inverse of e, fi_n derives number d.
+	 mod_inverse(e, fi_n) is be calculated iteratively.
+	 By starting from number x=2 up to fi_n, we are trying
+	 to find the number wich satisfies the condition (e*x)%fi_n == 1;
+	 The above equation came of modular's inverse definition.
+	 If the result of mod_inverse is equal to zero, that means
+	 mod_inverse doesn't exist. But, according to the paper,
+	 picking numbers with the steps mentioned above, this method
+	 guarantee mod_inverse's existance.
+
+- Final. Store public key and private key in a file.
+		"The public key consists of ​n ​and ​d​, in this order​."
+		"The private key consists of ​n ​and ​e​, in this order."
+		Using fwrite() with sizeof(size_t) in order to store.
+
+
+/* ============================= TASK B, C ============================= */
+
+Goal: Task B and C are for Data Encryption and Decryption respectively.
+
+Implemented Functions and Description:
+
+- 1. They are reading the pairs of numbers (n, d) or (n, e) depends on input
+	 input file.key. This is done by function getKey(char* f, size_t*n, size_t* ed).
+	 Argument f is the file's name.
+	 Argument n and ed updated by reference and is the two numbers be consisted in file.key.
+	 This function doen't care about if the input is either private or public key.
+	 It is user's resposibility to insert correct files in order to encrypt or decrypt succesfully.
+
+- 2. Read plaintext and ciphertext by using the functions
+	 char *file_to_buffer(FILE *fp) [1]
+	 in rad_decrypt function [2], respectively.
+
+	 Both [1] and [2] are store data from file into a buffer. We are not calling the function [1]
+	 for [2]'s implementation because, at the first one we are reading with sizeof(char)
+	 and at second with sizeof(size_t).
+
+	 [1]. Argument fp is the file pointer and returns the buffer wich contains all chars of plaintext.
+
+- 3. As we have already created the buffer for plaintext and ciphertext, by reading their elements one by one,
+     let the element named as x, we are calculating (x^ed)%n, where n and ed from step 1.
+     This calculation be done by the function called
+     size_t power_mod_n(size_t x, size_t y, size_t n) which returns the result of (x^y)%n.
+     The number d which be contained in key file, consists by 3 or 4 or more digits, depends
+     of TASK's A implementation. That means the result of calculation x^d is enormous for store.
+     C's compliler prints in terminal inf (infinity). In order to calculate this math, we made
+     a good use of identity (a*b)%n = {(a%n) * (b%n)}%n.
+     In our case we have to calculate (x%n, ed times)%n. The result of x%n is easy to be handled by compiler.
+
+- Final. We store the result at the output file. An because we are programmers lets take a look the pseudo-code below :).
+
+					switch (operation):
+					{
+						case Encryption:
+							Stores result with fwrite() by using sizeof(size_t);
+							break;
+
+						case Decryption:
+							Stores result with fprintf() by using "%c" data type. Otherwise hex values will be printed;
+							break;
+
+						default:
+							print: "You are propably reading TASK A or D or something else :).";
+					}
+
+/* ============================= TASK D ============================= */
+Goal: Using the tool.
+
+Status: Success. The desirable files have been created successfully.
+
+/* ============================= MINE TASK ============================= */
+
+1. Encrypt README file with public key.
+	~$ ./assign_3 -i README -o README_EN_PUB -k public.key -e
+
+
+1. Decrypt README_EN_PUB file with private key.
+	~$ ./assign_3 -i README_EN_PUB -o README_DE_PRI -k private.key -d
