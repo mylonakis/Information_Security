@@ -8,7 +8,7 @@
 
 + **Assignment 3:** An asymmetric encryption tool in C, from scratch. Provides RSA key-pair generation, encryption and decryption  
 
-+ **Assignment 4:**
++ **Assignment 4:**  Access Control Logging system using the C programming language. The access control logging system monitors                      and keep track of every file access and modification that occurs in the system.
 
 + **Assignment 5:**
 
