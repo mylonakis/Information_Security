@@ -1,0 +1,9 @@
+Fullname: Mylonakis Emmanouil
+Ragistration Number: 2015030079
+
+Description (1-2 lines). 
+	Access Control Logging tool. Simulates random users with ID between 1000-1004. Generates twelve 
+files in the same directory with excecutable. All files are been created by atleast one random user.
+User who create the file has privileges to open or write it. For the 12 files times 100 repetitions, random
+users are trying to open or write on the files. Every event logged in log file. Step's 2 requests are printed
+on terminal.
