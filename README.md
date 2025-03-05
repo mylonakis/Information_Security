@@ -6,7 +6,7 @@
                     develop the AES cryptographic algorithm in Electronic Code Book (ECB) mode with both 128 and 256 bit modes.
 
 
-+ **Assignment 3:**
++ **Assignment 3:** An asymmetric encryption tool in C, from scratch. Provides RSA key-pair generation, encryption and decryption  
 
 + **Assignment 4:**
 
