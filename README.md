@@ -10,7 +10,7 @@
 
 + **Assignment 4:**  Access Control Logging system using the C programming language. The access control logging system monitors                      and keep track of every file access and modification that occurs in the system.
 
-+ **Assignment 5:**
++ **Assignment 5:** A basic ransomware, which encrypts a number of files and delete the original unencrypted files.
 
 + **Assignment 6:**
 
