@@ -12,6 +12,6 @@
 
 + **Assignment 5:** A basic ransomware, which encrypts a number of files and delete the original unencrypted files.
 
-+ **Assignment 6:**
++ **Assignment 6:** Monitoring the network traffic using the Packet Capture library
 
 + **Assignment 7:**
