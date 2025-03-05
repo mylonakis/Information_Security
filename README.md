@@ -14,4 +14,4 @@
 
 + **Assignment 6:** Monitoring the network traffic using the Packet Capture library
 
-+ **Assignment 7:**
++ **Assignment 7:** A simple adblocking mechanism. The adblock.sh is responsible for generating a set of firewall rules that block access for specific network domain names.
